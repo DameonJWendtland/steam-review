@@ -1,4 +1,7 @@
 # gui/rating_calculator.py
+import math
+
+
 def calculate_recommended_rating(categories, visible_categories, selected_options, audience_vars):
     total_score = 0
     count = 0
@@ -37,4 +40,4 @@ def calculate_recommended_rating(categories, visible_categories, selected_option
         return 5
     recommended = total_score / count
     recommended = max(1, min(10, recommended))
-    return recommended
+    return math.floor(recommended)
