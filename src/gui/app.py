@@ -1,11 +1,12 @@
 # gui/app.py
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from src.categories import categories
 from src.gui.tabs import CategoryTabs
 from src.gui.review_generator import generate_review_text
 from src.gui.file_manager import save_review, copy_review
 from src.gui.options_dialog import open_options_dialog
+from src.gui.rating_calculator import calculate_recommended_rating  # Import hinzugefügt
 
 
 class SteamReviewGeneratorApp:
@@ -13,14 +14,11 @@ class SteamReviewGeneratorApp:
         self.root = root
         self.categories = categories
         self.visible_categories = {cat: tk.BooleanVar(value=True) for cat in self.categories}
-        # Neues design_settings-Dictionary mit Standardwerten:
         self.design_settings = {"review_heading": 1, "category_heading": 3}
 
-        # Notebook erstellen
         self.notebook = ttk.Notebook(root)
         self.notebook.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
-        # Erstelle Tabs über die eigene Klasse
         self.tabs = CategoryTabs(self.notebook, self.categories, self.visible_categories)
 
         self.create_rating_frame()
@@ -51,7 +49,7 @@ class SteamReviewGeneratorApp:
     def create_button_frame(self):
         self.button_frame = ttk.Frame(self.root)
         self.button_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
-        self.button_frame.columnconfigure((0, 1, 2, 3), weight=1)
+        self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)  # Platz für einen zusätzlichen Button
 
         ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0,
                                                                                                  padx=5, pady=5,
@@ -62,6 +60,11 @@ class SteamReviewGeneratorApp:
                                                                                          pady=5, sticky="ew")
         ttk.Button(self.button_frame, text="Options", command=self.open_options).grid(row=0, column=3, padx=5, pady=5,
                                                                                       sticky="ew")
+        ttk.Button(self.button_frame, text="Recommend Rating", command=self.show_recommended_rating).grid(row=0,
+                                                                                                          column=4,
+                                                                                                          padx=5,
+                                                                                                          pady=5,
+                                                                                                          sticky="ew")
 
     def generate_review(self):
         review_text = generate_review_text(
@@ -70,7 +73,7 @@ class SteamReviewGeneratorApp:
             visible_categories=self.visible_categories,
             selected_options=self.tabs.selected_options,
             audience_vars=self.tabs.audience_vars,
-            design_settings=self.design_settings  # Neuer Parameter!
+            design_settings=self.design_settings
         )
         self.output_text.delete("1.0", tk.END)
         self.output_text.insert(tk.END, review_text)
@@ -88,3 +91,12 @@ class SteamReviewGeneratorApp:
 
     def update_tabs(self):
         self.tabs.update_category_visibility()
+
+    def show_recommended_rating(self):
+        recommended = calculate_recommended_rating(
+            self.categories,
+            self.visible_categories,
+            self.tabs.selected_options,
+            self.tabs.audience_vars
+        )
+        messagebox.showinfo("Recommended Rating", f"Recommended rating: {recommended:.1f}")
