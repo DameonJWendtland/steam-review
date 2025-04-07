@@ -1,6 +1,8 @@
+import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 from src.categories import categories
+from src.gui.rating_calculator import calculate_recommended_rating
 from src.gui.tabs import CategoryTabs
 from src.gui.review_generator import generate_review_text
 from src.gui.file_manager import save_review, copy_review
@@ -85,7 +87,9 @@ class SteamReviewGeneratorApp:
         dialog = tk.Toplevel(self.root)
         dialog.title("Recommended Rating")
         dialog.geometry("300x150")
-        dialog.iconbitmap("bewertung.ico")
+
+        dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/bewertung.ico")
+
         label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
         label.pack(pady=20)
         button_frame = ttk.Frame(dialog)
