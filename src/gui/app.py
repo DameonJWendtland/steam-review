@@ -1,13 +1,12 @@
-# gui/app.py
+import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 from src.categories import categories
+from src.gui.rating_calculator import calculate_recommended_rating
 from src.gui.tabs import CategoryTabs
 from src.gui.review_generator import generate_review_text
 from src.gui.file_manager import save_review, copy_review
 from src.gui.options_dialog import open_options_dialog
-from src.gui.rating_calculator import calculate_recommended_rating
-
 
 class SteamReviewGeneratorApp:
     def __init__(self, root):
@@ -15,16 +14,12 @@ class SteamReviewGeneratorApp:
         self.categories = categories
         self.visible_categories = {cat: tk.BooleanVar(value=True) for cat in self.categories}
         self.design_settings = {"review_heading": 1, "category_heading": 3}
-
         self.notebook = ttk.Notebook(root)
         self.notebook.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
-
         self.tabs = CategoryTabs(self.notebook, self.categories, self.visible_categories)
-
         self.create_rating_frame()
         self.create_output_frame()
         self.create_button_frame()
-
         root.columnconfigure(0, weight=1)
         root.rowconfigure(2, weight=1)
 
@@ -50,21 +45,11 @@ class SteamReviewGeneratorApp:
         self.button_frame = ttk.Frame(self.root)
         self.button_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
         self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
-
-        ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0,
-                                                                                                 padx=5, pady=5,
-                                                                                                 sticky="ew")
-        ttk.Button(self.button_frame, text="Save as TXT", command=self.save_as_txt).grid(row=0, column=1, padx=5,
-                                                                                         pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Copy Review", command=self.copy_review).grid(row=0, column=2, padx=5,
-                                                                                         pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Options", command=self.open_options).grid(row=0, column=3, padx=5, pady=5,
-                                                                                      sticky="ew")
-        ttk.Button(self.button_frame, text="Recommend Rating", command=self.show_recommended_rating).grid(row=0,
-                                                                                                          column=4,
-                                                                                                          padx=5,
-                                                                                                          pady=5,
-                                                                                                          sticky="ew")
+        ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0, padx=5, pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Save as TXT", command=self.save_as_txt).grid(row=0, column=1, padx=5, pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Copy Review", command=self.copy_review).grid(row=0, column=2, padx=5, pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Options", command=self.open_options).grid(row=0, column=3, padx=5, pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Recommend Rating", command=self.show_recommended_rating).grid(row=0, column=4, padx=5, pady=5, sticky="ew")
 
     def generate_review(self):
         review_text = generate_review_text(
@@ -99,27 +84,22 @@ class SteamReviewGeneratorApp:
             self.tabs.selected_options,
             self.tabs.audience_vars
         )
-
         dialog = tk.Toplevel(self.root)
         dialog.title("Recommended Rating")
         dialog.geometry("300x150")
-        dialog.iconbitmap("../icons/bewertung.ico")
+
+        dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/bewertung.ico")
 
         label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
         label.pack(pady=20)
-
         button_frame = ttk.Frame(dialog)
         button_frame.pack(side="bottom", fill="x", pady=10, padx=10)
-
         def on_cancel():
             dialog.destroy()
-
         def on_apply():
             self.rating_var.set(recommended)
             dialog.destroy()
-
         cancel_button = ttk.Button(button_frame, text="Cancel", command=on_cancel)
         apply_button = ttk.Button(button_frame, text="Apply", command=on_apply)
-
         cancel_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         apply_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
