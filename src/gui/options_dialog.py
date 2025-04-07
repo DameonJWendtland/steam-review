@@ -5,22 +5,13 @@ import webbrowser
 
 
 def open_options_dialog(root, categories, visible_categories, design_settings, update_callback):
-    """
-    Opens the options dialog with three buttons:
-      - Categories: Opens the category selection view.
-      - Design settings: Allows the user to select heading sizes for review and categories.
-      - Help: Opens the GitHub issues URL.
-    After saving changes, update_callback() is called to update the GUI.
-    """
     options_dialog = tk.Toplevel(root)
     options_dialog.title("Options")
     options_dialog.geometry("400x500")
 
-    # Top frame for the three buttons
     button_frame = ttk.Frame(options_dialog)
     button_frame.pack(side="top", fill="x", pady=5)
 
-    # Content frame for displaying different settings views
     content_frame = ttk.Frame(options_dialog)
     content_frame.pack(side="top", fill="both", expand=True, padx=10, pady=10)
 
@@ -89,31 +80,25 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
     def load_design_settings():
-        # Clear current content in the content_frame
         for widget in content_frame.winfo_children():
             widget.destroy()
 
-        # Create a frame for design settings
         settings_frame = ttk.Frame(content_frame)
         settings_frame.pack(side="top", fill="both", expand=True, padx=10, pady=10)
 
-        # Variables for design settings (heading sizes)
         review_heading_var = tk.IntVar(value=design_settings.get("review_heading", 1))
         category_heading_var = tk.IntVar(value=design_settings.get("category_heading", 3))
 
-        # Label and Spinbox for Review Heading Size
         review_label = ttk.Label(settings_frame, text="Review Heading Size:")
         review_label.grid(row=0, column=0, sticky="w", pady=5, padx=5)
         review_spin = ttk.Spinbox(settings_frame, from_=1, to=6, textvariable=review_heading_var, width=5)
         review_spin.grid(row=0, column=1, sticky="w", pady=5, padx=5)
 
-        # Label and Spinbox for Category Heading Size
         category_label = ttk.Label(settings_frame, text="Category Heading Size:")
         category_label.grid(row=1, column=0, sticky="w", pady=5, padx=5)
         category_spin = ttk.Spinbox(settings_frame, from_=1, to=6, textvariable=category_heading_var, width=5)
         category_spin.grid(row=1, column=1, sticky="w", pady=5, padx=5)
 
-        # Bottom frame for Save and Reset buttons
         bottom_frame = ttk.Frame(content_frame)
         bottom_frame.pack(side="bottom", fill="x", pady=5)
 
@@ -133,11 +118,9 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
     def open_help():
-        # Open the GitHub issues URL in the default web browser
         url = "https://github.com/DameonJWendtland/steam-review/issues"
         webbrowser.open(url)
 
-    # Top buttons for switching between views
     btn_categories = ttk.Button(button_frame, text="Categories", command=load_categories)
     btn_design = ttk.Button(button_frame, text="Design settings", command=load_design_settings)
     btn_help = ttk.Button(button_frame, text="Help 🔗", command=open_help)
