@@ -103,6 +103,7 @@ class SteamReviewGeneratorApp:
         dialog = tk.Toplevel(self.root)
         dialog.title("Recommended Rating")
         dialog.geometry("300x150")
+        dialog.iconbitmap("../icons/bewertung.ico")
 
         label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
         label.pack(pady=20)

@@ -8,6 +8,7 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
     options_dialog = tk.Toplevel(root)
     options_dialog.title("Options")
     options_dialog.geometry("400x500")
+    options_dialog.iconbitmap("../icons/optionen.ico")
 
     button_frame = ttk.Frame(options_dialog)
     button_frame.pack(side="top", fill="x", pady=5)

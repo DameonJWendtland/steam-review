@@ -8,6 +8,7 @@ def main():
     root.title("Steam Review Generator")
     root.geometry("800x600")
     root.resizable(True, True)
+    root.iconbitmap("../icons/checkliste.ico")
 
     app = SteamReviewGeneratorApp(root)
     root.mainloop()
