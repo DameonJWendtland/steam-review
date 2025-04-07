@@ -6,7 +6,7 @@ from src.gui.tabs import CategoryTabs
 from src.gui.review_generator import generate_review_text
 from src.gui.file_manager import save_review, copy_review
 from src.gui.options_dialog import open_options_dialog
-from src.gui.rating_calculator import calculate_recommended_rating  # Import hinzugefügt
+from src.gui.rating_calculator import calculate_recommended_rating
 
 
 class SteamReviewGeneratorApp:
@@ -49,7 +49,7 @@ class SteamReviewGeneratorApp:
     def create_button_frame(self):
         self.button_frame = ttk.Frame(self.root)
         self.button_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
-        self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)  # Platz für einen zusätzlichen Button
+        self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
 
         ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0,
                                                                                                  padx=5, pady=5,
@@ -99,4 +99,26 @@ class SteamReviewGeneratorApp:
             self.tabs.selected_options,
             self.tabs.audience_vars
         )
-        messagebox.showinfo("Recommended Rating", f"Recommended rating: {recommended:.1f}")
+
+        dialog = tk.Toplevel(self.root)
+        dialog.title("Recommended Rating")
+        dialog.geometry("300x150")
+
+        label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
+        label.pack(pady=20)
+
+        button_frame = ttk.Frame(dialog)
+        button_frame.pack(side="bottom", fill="x", pady=10, padx=10)
+
+        def on_cancel():
+            dialog.destroy()
+
+        def on_apply():
+            self.rating_var.set(recommended)
+            dialog.destroy()
+
+        cancel_button = ttk.Button(button_frame, text="Cancel", command=on_cancel)
+        apply_button = ttk.Button(button_frame, text="Apply", command=on_apply)
+
+        cancel_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
+        apply_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
