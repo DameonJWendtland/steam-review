@@ -13,10 +13,14 @@ class SteamReviewGeneratorApp:
         self.root = root
         self.categories = categories
         self.visible_categories = {cat: tk.BooleanVar(value=True) for cat in self.categories}
+        # Neues design_settings-Dictionary mit Standardwerten:
+        self.design_settings = {"review_heading": 1, "category_heading": 3}
 
+        # Notebook erstellen
         self.notebook = ttk.Notebook(root)
         self.notebook.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
+        # Erstelle Tabs über die eigene Klasse
         self.tabs = CategoryTabs(self.notebook, self.categories, self.visible_categories)
 
         self.create_rating_frame()
@@ -65,7 +69,8 @@ class SteamReviewGeneratorApp:
             categories=self.categories,
             visible_categories=self.visible_categories,
             selected_options=self.tabs.selected_options,
-            audience_vars=self.tabs.audience_vars
+            audience_vars=self.tabs.audience_vars,
+            design_settings=self.design_settings  # Neuer Parameter!
         )
         self.output_text.delete("1.0", tk.END)
         self.output_text.insert(tk.END, review_text)
@@ -79,7 +84,7 @@ class SteamReviewGeneratorApp:
         copy_review(self.root, review_text)
 
     def open_options(self):
-        open_options_dialog(self.root, self.categories, self.visible_categories, self.update_tabs)
+        open_options_dialog(self.root, self.categories, self.visible_categories, self.design_settings, self.update_tabs)
 
     def update_tabs(self):
         self.tabs.update_category_visibility()
