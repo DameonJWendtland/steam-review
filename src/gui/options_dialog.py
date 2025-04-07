@@ -44,6 +44,13 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
 
         scrollable_frame.bind("<Configure>", on_frame_configure)
 
+        # Bind mousewheel events to enable scrolling
+        def _on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+        canvas.bind("<Enter>", lambda event: canvas.bind_all("<MouseWheel>", _on_mousewheel))
+        canvas.bind("<Leave>", lambda event: canvas.unbind_all("<MouseWheel>"))
+
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
 
@@ -133,7 +140,7 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
     # Top buttons for switching between views
     btn_categories = ttk.Button(button_frame, text="Categories", command=load_categories)
     btn_design = ttk.Button(button_frame, text="Design settings", command=load_design_settings)
-    btn_help = ttk.Button(button_frame, text="Help", command=open_help)
+    btn_help = ttk.Button(button_frame, text="Help 🔗", command=open_help)
 
     btn_categories.pack(side="left", expand=True, fill="x", padx=5)
     btn_design.pack(side="left", expand=True, fill="x", padx=5)
