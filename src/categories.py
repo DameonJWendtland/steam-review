@@ -46,7 +46,6 @@ categories = {
         "You will want an entire hard drive to hold it"
     ],
     "Difficulty": [
-        "Just press 'W' / Point and click",
         "Easy",
         "Easy to learn / Hard to master",
         "Significant brain usage",
@@ -62,19 +61,20 @@ categories = {
         "You'll need a second life for grinding"
     ],
     "Story": [
-        "No Story",
-        "Some lore",
-        "Average",
-        "Good",
+        "It'll replace your life",
         "Lovely",
-        "It'll replace your life"
+        "Good",
+        "Average",
+        "Some lore",
+        "No Story"
     ],
     "Game Time": [
-        "Long enough for a cup of coffee",
-        "Short",
-        "Average",
+        "To infinity and beyond",
         "Long",
-        "To infinity and beyond"
+        "Average",
+        "Short",
+        "Long enough for a cup of coffee",
+        "Longer than necessary"
     ],
     "Price": [
         "It's free!",
