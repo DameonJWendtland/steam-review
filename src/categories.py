@@ -13,8 +13,7 @@ categories = {
         "Good",
         "It's just gameplay",
         "Mehh",
-        "Watch paint dry instead",
-        "Just don't"
+        "Watch paint dry instead"
     ],
     "Audio": [
         "Eargasm",
@@ -22,22 +21,21 @@ categories = {
         "Good",
         "Not too bad",
         "Bad",
-        "I'm now deaf"
+        "Vincent van Gogh"
     ],
     "Audience": [
         "Everyone",
         "Kids",
         "Teens",
         "Adults",
-        "Grandma"
+        "Elder"
     ],
     "PC Requirements": [
         "Check if you can run paint",
         "Potato",
         "Decent",
         "Fast",
-        "Rich boi",
-        "Ask NASA if they have a spare computer"
+        "Rich boi"
     ],
     "Game Size": [
         "Floppy Disk",
@@ -48,7 +46,7 @@ categories = {
         "You will want an entire hard drive to hold it"
     ],
     "Difficulty": [
-        "Just press 'W'",
+        "Just press 'W' / Point and click",
         "Easy",
         "Easy to learn / Hard to master",
         "Significant brain usage",
@@ -83,7 +81,7 @@ categories = {
         "Worth the price",
         "If it's on sale",
         "If u have some spare money left",
-        "Not recommended",
+        "Not recommended to buy",
         "You could also just burn your money"
     ],
     "Bugs": [
@@ -91,12 +89,13 @@ categories = {
         "Minor bugs",
         "Can get annoying",
         "ARK: Survival Evolved",
-        "The game itself is a big terrarium for bugs"
+        "The game is the definition of Bugs"
     ],
     "Controls": [
         "Perfect",
         "Needs improvement",
-        "Frustrating"
+        "Frustrating",
+        "Just breaking your hands do the same"
     ],
     "Multiplayer": [
         "Top",
@@ -112,7 +111,8 @@ categories = {
     "Innovation": [
         "Groundbreaking",
         "Refreshing",
-        "Repetitive"
+        "Repetitive",
+        "Enough is enough"
     ],
     "Immersion": [
         "Fully immersive",
@@ -122,6 +122,7 @@ categories = {
     "Support / Community": [
         "Helpful",
         "Neutral",
-        "Frustrating"
+        "Frustrating",
+        "\"Git Gud pal\""
     ],
 }
