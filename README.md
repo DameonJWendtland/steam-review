@@ -105,5 +105,7 @@ The code is structured modularly for easy maintenance and expansion:
 Icons were taken here:
 
 <a href="https://www.flaticon.com/de/kostenlose-icons/rezension" title="rezension Icons">bewertung.ico - Flaticon</a>
+
 <a href="https://www.flaticon.com/de/kostenlose-icons/filter" title="filter Icons">optionen.ico - Flaticon</a>
+
 <a href="https://www.flaticon.com/de/kostenlose-icons/auswertung" title="auswertung Icons">checkliste.ico - Flaticon</a>
