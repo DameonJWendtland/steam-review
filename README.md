@@ -29,7 +29,7 @@ Adjust various settings in the options dialog, which includes three tabs:
 The app can calculate a recommended rating based on your selections. A dedicated dialog shows the recommendation, and you can apply it (which updates the slider) or cancel.
 
 - **Credits?**:
-If you want to support this project, it would be awesome to include the credits via the options menu -> design settings -> ☑ Include Credits. But you don't need to! <3
+If you want to support this project, it would be awesome to include the credits via the options menu -> design settings -> ☑ Include Credits. But you don't have to! <3
 
 ## Folder Structure
 ```bash
