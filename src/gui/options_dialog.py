@@ -55,6 +55,7 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         reset_button = ttk.Button(bottom_frame, text="Reset", command=reset_options)
         save_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
+
     def load_design_settings():
         for widget in content_frame.winfo_children():
             widget.destroy()
@@ -62,6 +63,7 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         settings_frame.pack(side="top", fill="both", expand=True, padx=10, pady=10)
         review_heading_var = tk.IntVar(value=design_settings.get("review_heading", 1))
         category_heading_var = tk.IntVar(value=design_settings.get("category_heading", 3))
+        credits_var = tk.BooleanVar(value=design_settings.get("credits", False))
         review_label = ttk.Label(settings_frame, text="Review Heading Size:")
         review_label.grid(row=0, column=0, sticky="w", pady=5, padx=5)
         review_spin = ttk.Spinbox(settings_frame, from_=1, to=6, textvariable=review_heading_var, width=5)
@@ -70,20 +72,28 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         category_label.grid(row=1, column=0, sticky="w", pady=5, padx=5)
         category_spin = ttk.Spinbox(settings_frame, from_=1, to=6, textvariable=category_heading_var, width=5)
         category_spin.grid(row=1, column=1, sticky="w", pady=5, padx=5)
+        credits_check = ttk.Checkbutton(settings_frame, text="Include Credits ( would be awesome! <3 )", variable=credits_var)
+        credits_check.grid(row=2, column=0, columnspan=2, sticky="w", pady=5, padx=5)
         bottom_frame = ttk.Frame(content_frame)
         bottom_frame.pack(side="bottom", fill="x", pady=5)
+
         def save_design_settings():
             design_settings["review_heading"] = review_heading_var.get()
             design_settings["category_heading"] = category_heading_var.get()
+            design_settings["credits"] = credits_var.get()
             update_callback()
             options_dialog.destroy()
+
         def reset_design_settings():
             review_heading_var.set(1)
             category_heading_var.set(3)
+            credits_var.set(False)
+
         save_button = ttk.Button(bottom_frame, text="Save", command=save_design_settings)
         reset_button = ttk.Button(bottom_frame, text="Reset", command=reset_design_settings)
         save_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
+
     def open_help():
         url = "https://github.com/DameonJWendtland/steam-review/issues"
         webbrowser.open(url)
