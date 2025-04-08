@@ -34,6 +34,7 @@ project_root/
 ├── src/
 │   ├── main.py               # Entry point that initializes and runs the application.
 │   ├── categories.py         # Contains all category definitions.
+│   ├── icons/...             # /Window icons.
 │   └── gui/
 │       ├── app.py            # Main application GUI that integrates all modules.
 │       ├── file_manager.py   # Functions for saving and copying reviews.
@@ -96,3 +97,13 @@ The code is structured modularly for easy maintenance and expansion:
 - GUI Components: Adjust the look and behavior of the interface in the modules under `src/gui/`.
 
 - Rating Calculation: Change the rating recommendation logic in `src/gui/rating_calculator.py`.
+
+
+---
+
+## Attribution
+Icons were taken here:
+
+<a href="https://www.flaticon.com/de/kostenlose-icons/rezension" title="rezension Icons">bewertung.ico - Flaticon</a>
+<a href="https://www.flaticon.com/de/kostenlose-icons/filter" title="filter Icons">optionen.ico - Flaticon</a>
+<a href="https://www.flaticon.com/de/kostenlose-icons/auswertung" title="auswertung Icons">checkliste.ico - Flaticon</a>
