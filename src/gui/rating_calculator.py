@@ -1,6 +1,4 @@
-# gui/rating_calculator.py
 import math
-
 
 def calculate_recommended_rating(categories, visible_categories, selected_options, audience_vars):
     total_score = 0
@@ -14,13 +12,13 @@ def calculate_recommended_rating(categories, visible_categories, selected_option
             continue
 
         if cat == "Audience":
-            selected_scores = []
-            for option in options:
-                if option in audience_vars and audience_vars[option].get():
-                    idx = options.index(option)
-                    score = get_score(idx, len(options))
-                    selected_scores.append(score)
-            cat_score = sum(selected_scores) / len(selected_scores) if selected_scores else 5
+            total_options = len(options)
+            count_without_everyone = sum(1 for option in options if option != "Everyone" and audience_vars.get(option, False) and audience_vars[option].get())
+            if (("Everyone" in audience_vars and audience_vars["Everyone"].get()) or (count_without_everyone == total_options - 1)):
+                selected_count = total_options
+            else:
+                selected_count = count_without_everyone
+            cat_score = 1 + (selected_count / total_options) * 9
         else:
             selected_option = selected_options.get(cat, None)
             if selected_option is None or selected_option.get() == "":
