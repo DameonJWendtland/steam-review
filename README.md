@@ -45,6 +45,11 @@ project_root/
 └── 
 ```
 ## Installation
+
+### Installer
+Go to [releases](https://github.com/DameonJWendtland/steam-review-generator/releases) and choose the lates one. Download the installer and execute it afterwards.
+
+
 ### Install Python 3:
 Make sure you have Python 3 installed on your system.
 
