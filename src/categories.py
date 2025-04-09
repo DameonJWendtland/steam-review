@@ -98,10 +98,13 @@ categories = {
         "Just breaking your hands do the same"
     ],
     "Multiplayer": [
-        "Top",
-        "Good",
-        "Connection issues",
-        "Missing completely"
+        "Top (excellent experience with smooth gameplay and active, fun community)",
+        "Good (generally solid, with minor issues here and there)",
+        "Matchmaking pain (long queues, unfair teams, or unbalanced ranks)",
+        "Players can't behave (toxic behavior, griefing, or lack of moderation)",
+        "Unbalanced gameplay (some classes/chars/strategies ruin the fun)",
+        "Connection issues (lag, disconnects, or unstable servers)",
+        "Dead (no active players or matches)"
     ],
     "Replayability": [
         "Unlimited",
@@ -109,20 +112,29 @@ categories = {
         "One-time only"
     ],
     "Innovation": [
-        "Groundbreaking",
-        "Refreshing",
-        "Repetitive",
-        "Enough is enough"
+        "Groundbreaking (introduces entirely new ideas or concepts)",
+        "Refreshing (feels new and different, but not revolutionary)",
+        "Repetitive (reuses familiar ideas without much change)",
+        "Enough is enough (overused concepts that feel tired or worn out)"
     ],
     "Immersion": [
-        "Fully immersive",
-        "Exciting",
-        "Superficial"
+        "Fully immersive (completely absorbing and engaging)",
+        "Exciting (thrilling and emotionally stimulating)",
+        "Engaging (holds attention and encourages involvement)",
+        "Interesting (catches curiosity but not deeply absorbing)",
+        "Neutral (neither engaging nor disengaging)",
+        "Mildly distracting (slightly pulls attention away)",
+        "Superficial (lacking depth or emotional connection)",
+        "Boring (fails to hold attention)",
+        "Disengaging (actively loses the viewer's interest)"
     ],
     "Support / Community": [
-        "Helpful",
-        "Neutral",
-        "Frustrating",
-        "\"Git Gud pal\""
+        "Helpful (supportive, welcoming, and quick to assist)",
+        "Mostly helpful (generally supportive, with occasional flaws)",
+        "Neutral (neither helpful nor unhelpful, just okay)",
+        "Inconsistent (sometimes helpful, sometimes confusing or absent)",
+        "Passive-aggressive (help is offered, but with attitude)",
+        "Frustrating (slow, unclear, or uncooperative support)",
+        "\"Git Gud pal\" (toxic or unwelcoming — you're on your own)"
     ],
 }
