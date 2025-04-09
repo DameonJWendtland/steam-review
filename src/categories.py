@@ -9,19 +9,19 @@ categories = {
         "MS-DOS"
     ],
     "Gameplay": [
-        "Very good",
-        "Good",
-        "It's just gameplay",
-        "Mehh",
-        "Watch paint dry instead"
+        "Very good (smooth & fun)",
+        "Good (solid & enjoyable)",
+        "It's just gameplay (meh, it works)",
+        "Mehh (clunky & boring)",
+        "Watch paint dry instead (painfully dull)"
     ],
     "Audio": [
-        "Eargasm",
-        "Very good",
-        "Good",
-        "Not too bad",
-        "Bad",
-        "Vincent van Gogh"
+        "Eargasm (pure audio bliss)",
+        "Very good (clean & immersive)",
+        "Good (does the job well)",
+        "Not too bad (okay-ish)",
+        "Bad (noticeably weak)",
+        "Vincent van Gogh (you’ll want no ears)"
     ],
     "Audience": [
         "Everyone",
@@ -42,11 +42,10 @@ categories = {
         "Old Fashioned",
         "Workable",
         "Big",
-        "Will eat 15% of your 1TB hard drive",
-        "You will want an entire hard drive to hold it"
+        "Will eat 15% of your 1TB",
+        "Needs its own hard drive"
     ],
     "Difficulty": [
-        "Just press 'W' / Point and click",
         "Easy",
         "Easy to learn / Hard to master",
         "Significant brain usage",
@@ -55,53 +54,57 @@ categories = {
     ],
     "Grind": [
         "Nothing to grind",
-        "Only if u care about leaderboards/ranks",
-        "Isn't necessary to progress",
-        "Average grind level",
+        "Only if you care",
+        "Not needed to progress",
+        "Average grind",
         "Too much grind",
-        "You'll need a second life for grinding"
+        "Second life needed"
     ],
     "Story": [
-        "No Story",
-        "Some lore",
-        "Average",
-        "Good",
+        "It'll replace your life",
         "Lovely",
-        "It'll replace your life"
+        "Good",
+        "Average",
+        "Some lore",
+        "No Story"
     ],
     "Game Time": [
-        "Long enough for a cup of coffee",
-        "Short",
-        "Average",
+        "To infinity and beyond",
         "Long",
-        "To infinity and beyond"
+        "Average",
+        "Short",
+        "Coffee break long",
+        "Too long"
     ],
     "Price": [
         "It's free!",
         "Worth the price",
-        "If it's on sale",
-        "If u have some spare money left",
-        "Not recommended to buy",
-        "You could also just burn your money"
+        "If on sale",
+        "If you have money left",
+        "Not worth it",
+        "Burn your money instead"
     ],
     "Bugs": [
         "Never heard of",
         "Minor bugs",
         "Can get annoying",
         "ARK: Survival Evolved",
-        "The game is the definition of Bugs"
+        "Bug Simulator"
     ],
     "Controls": [
         "Perfect",
         "Needs improvement",
         "Frustrating",
-        "Just breaking your hands do the same"
+        "Hand-breaker"
     ],
     "Multiplayer": [
-        "Top",
-        "Good",
-        "Connection issues",
-        "Missing completely"
+        "Top (smooth & active)",
+        "Good (mostly fine)",
+        "Matchmaking pain (unfair/slow)",
+        "Players can't behave (toxic)",
+        "Unbalanced (some OP stuff)",
+        "Connection issues (lags/discos)",
+        "Dead (no one’s online)"
     ],
     "Replayability": [
         "Unlimited",
@@ -109,20 +112,29 @@ categories = {
         "One-time only"
     ],
     "Innovation": [
-        "Groundbreaking",
-        "Refreshing",
-        "Repetitive",
-        "Enough is enough"
+        "Groundbreaking (totally new)",
+        "Refreshing (feels fresh)",
+        "Repetitive (same old)",
+        "Enough is enough (overdone)"
     ],
     "Immersion": [
-        "Fully immersive",
-        "Exciting",
-        "Superficial"
+        "Fully immersive (you're in)",
+        "Exciting (gets you hyped)",
+        "Engaging (pulls you in)",
+        "Interesting (curious but chill)",
+        "Neutral (meh)",
+        "Mildly distracting (off-track)",
+        "Superficial (no depth)",
+        "Boring (zzz...)",
+        "Disengaging (you quit mentally)"
     ],
     "Support / Community": [
-        "Helpful",
-        "Neutral",
-        "Frustrating",
-        "\"Git Gud pal\""
-    ],
+        "Helpful (fast & kind)",
+        "Mostly helpful (usually okay)",
+        "Neutral (standard)",
+        "Inconsistent (hit or miss)",
+        "Passive-aggressive (with salt)",
+        "Frustrating (no help at all)",
+        "\"Git Gud pal\" (good luck lol)"
+    ]
 }
