@@ -42,8 +42,8 @@ categories = {
         "Old Fashioned",
         "Workable",
         "Big",
-        "Will eat 15% of your 1TB hard drive",
-        "You will want an entire hard drive to hold it"
+        "Will eat 15% of your 1TB",
+        "Needs its own hard drive"
     ],
     "Difficulty": [
         "Easy",
@@ -54,11 +54,11 @@ categories = {
     ],
     "Grind": [
         "Nothing to grind",
-        "Only if u care about leaderboards/ranks",
-        "Isn't necessary to progress",
-        "Average grind level",
+        "Only if you care",
+        "Not needed to progress",
+        "Average grind",
         "Too much grind",
-        "You'll need a second life for grinding"
+        "Second life needed"
     ],
     "Story": [
         "It'll replace your life",
@@ -73,38 +73,38 @@ categories = {
         "Long",
         "Average",
         "Short",
-        "Long enough for a cup of coffee",
-        "Longer than necessary"
+        "Coffee break long",
+        "Too long"
     ],
     "Price": [
         "It's free!",
         "Worth the price",
-        "If it's on sale",
-        "If u have some spare money left",
-        "Not recommended to buy",
-        "You could also just burn your money"
+        "If on sale",
+        "If you have money left",
+        "Not worth it",
+        "Burn your money instead"
     ],
     "Bugs": [
         "Never heard of",
         "Minor bugs",
         "Can get annoying",
         "ARK: Survival Evolved",
-        "The game is the definition of Bugs"
+        "Bug Simulator"
     ],
     "Controls": [
         "Perfect",
         "Needs improvement",
         "Frustrating",
-        "Just breaking your hands do the same"
+        "Hand-breaker"
     ],
     "Multiplayer": [
-        "Top (excellent experience with smooth gameplay and active, fun community)",
-        "Good (generally solid, with minor issues here and there)",
-        "Matchmaking pain (long queues, unfair teams, or unbalanced ranks)",
-        "Players can't behave (toxic behavior, griefing, or lack of moderation)",
-        "Unbalanced gameplay (some classes/chars/strategies ruin the fun)",
-        "Connection issues (lag, disconnects, or unstable servers)",
-        "Dead (no active players or matches)"
+        "Top (smooth & active)",
+        "Good (mostly fine)",
+        "Matchmaking pain (unfair/slow)",
+        "Players can't behave (toxic)",
+        "Unbalanced (some OP stuff)",
+        "Connection issues (lags/discos)",
+        "Dead (no one’s online)"
     ],
     "Replayability": [
         "Unlimited",
@@ -112,29 +112,29 @@ categories = {
         "One-time only"
     ],
     "Innovation": [
-        "Groundbreaking (introduces entirely new ideas or concepts)",
-        "Refreshing (feels new and different, but not revolutionary)",
-        "Repetitive (reuses familiar ideas without much change)",
-        "Enough is enough (overused concepts that feel tired or worn out)"
+        "Groundbreaking (totally new)",
+        "Refreshing (feels fresh)",
+        "Repetitive (same old)",
+        "Enough is enough (overdone)"
     ],
     "Immersion": [
-        "Fully immersive (completely absorbing and engaging)",
-        "Exciting (thrilling and emotionally stimulating)",
-        "Engaging (holds attention and encourages involvement)",
-        "Interesting (catches curiosity but not deeply absorbing)",
-        "Neutral (neither engaging nor disengaging)",
-        "Mildly distracting (slightly pulls attention away)",
-        "Superficial (lacking depth or emotional connection)",
-        "Boring (fails to hold attention)",
-        "Disengaging (actively loses the viewer's interest)"
+        "Fully immersive (you're in)",
+        "Exciting (gets you hyped)",
+        "Engaging (pulls you in)",
+        "Interesting (curious but chill)",
+        "Neutral (meh)",
+        "Mildly distracting (off-track)",
+        "Superficial (no depth)",
+        "Boring (zzz...)",
+        "Disengaging (you quit mentally)"
     ],
     "Support / Community": [
-        "Helpful (supportive, welcoming, and quick to assist)",
-        "Mostly helpful (generally supportive, with occasional flaws)",
-        "Neutral (neither helpful nor unhelpful, just okay)",
-        "Inconsistent (sometimes helpful, sometimes confusing or absent)",
-        "Passive-aggressive (help is offered, but with attitude)",
-        "Frustrating (slow, unclear, or uncooperative support)",
-        "\"Git Gud pal\" (toxic or unwelcoming — you're on your own)"
-    ],
+        "Helpful (fast & kind)",
+        "Mostly helpful (usually okay)",
+        "Neutral (standard)",
+        "Inconsistent (hit or miss)",
+        "Passive-aggressive (with salt)",
+        "Frustrating (no help at all)",
+        "\"Git Gud pal\" (good luck lol)"
+    ]
 }
