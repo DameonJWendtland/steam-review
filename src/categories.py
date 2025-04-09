@@ -9,19 +9,19 @@ categories = {
         "MS-DOS"
     ],
     "Gameplay": [
-        "Very good",
-        "Good",
-        "It's just gameplay",
-        "Mehh",
-        "Watch paint dry instead"
+        "Very good (smooth & fun)",
+        "Good (solid & enjoyable)",
+        "It's just gameplay (meh, it works)",
+        "Mehh (clunky & boring)",
+        "Watch paint dry instead (painfully dull)"
     ],
     "Audio": [
-        "Eargasm",
-        "Very good",
-        "Good",
-        "Not too bad",
-        "Bad",
-        "Vincent van Gogh"
+        "Eargasm (pure audio bliss)",
+        "Very good (clean & immersive)",
+        "Good (does the job well)",
+        "Not too bad (okay-ish)",
+        "Bad (noticeably weak)",
+        "Vincent van Gogh (you’ll want no ears)"
     ],
     "Audience": [
         "Everyone",
