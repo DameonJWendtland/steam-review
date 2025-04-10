@@ -3,14 +3,11 @@ import math
 def calculate_recommended_rating(categories, visible_categories, selected_options, audience_vars):
     total_score = 0
     count = 0
-
     def get_score(index, n_options):
         return 10 - index * (9 / (n_options - 1))
-
     for cat, options in categories.items():
         if not visible_categories[cat].get():
             continue
-
         if cat == "Audience":
             total_options = len(options)
             count_without_everyone = sum(1 for option in options if option != "Everyone" and audience_vars.get(option, False) and audience_vars[option].get())
@@ -30,10 +27,8 @@ def calculate_recommended_rating(categories, visible_categories, selected_option
                     cat_score = get_score(idx, len(options))
                 else:
                     cat_score = 5
-
         total_score += cat_score
         count += 1
-
     if count == 0:
         return 5
     recommended = total_score / count

@@ -8,7 +8,6 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
     options_dialog.title("Options")
     options_dialog.geometry("400x500")
     options_dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/optionen.ico")
-
     button_frame = ttk.Frame(options_dialog)
     button_frame.pack(side="top", fill="x", pady=5)
     content_frame = ttk.Frame(options_dialog)
@@ -55,7 +54,6 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         reset_button = ttk.Button(bottom_frame, text="Reset", command=reset_options)
         save_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
-
     def load_design_settings():
         for widget in content_frame.winfo_children():
             widget.destroy()
@@ -76,24 +74,20 @@ def open_options_dialog(root, categories, visible_categories, design_settings, u
         credits_check.grid(row=2, column=0, columnspan=2, sticky="w", pady=5, padx=5)
         bottom_frame = ttk.Frame(content_frame)
         bottom_frame.pack(side="bottom", fill="x", pady=5)
-
         def save_design_settings():
             design_settings["review_heading"] = review_heading_var.get()
             design_settings["category_heading"] = category_heading_var.get()
             design_settings["credits"] = credits_var.get()
             update_callback()
             options_dialog.destroy()
-
         def reset_design_settings():
             review_heading_var.set(1)
             category_heading_var.set(3)
             credits_var.set(False)
-
         save_button = ttk.Button(bottom_frame, text="Save", command=save_design_settings)
         reset_button = ttk.Button(bottom_frame, text="Reset", command=reset_design_settings)
         save_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         reset_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
-
     def open_help():
         url = "https://github.com/DameonJWendtland/steam-review/issues"
         webbrowser.open(url)
