@@ -1,12 +1,13 @@
+# rating_calculator.py
 import math
 
-def calculate_recommended_rating(categories, visible_categories, selected_options, audience_vars):
+def calculate_recommended_rating(categories, visible_categories, use_in_calc, selected_options, audience_vars):
     total_score = 0
     count = 0
     def get_score(index, n_options):
         return 10 - index * (9 / (n_options - 1))
     for cat, options in categories.items():
-        if not visible_categories[cat].get():
+        if not visible_categories[cat].get() or not use_in_calc[cat].get():
             continue
         if cat == "Audience":
             total_options = len(options)

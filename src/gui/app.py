@@ -1,3 +1,4 @@
+# app.py
 import os
 import configparser
 import tkinter as tk
@@ -40,6 +41,13 @@ class SteamReviewGeneratorApp:
                 self.visible_categories[cat] = tk.BooleanVar(value=value)
         else:
             self.visible_categories = {cat: tk.BooleanVar(value=True) for cat in self.categories}
+        self.use_in_calc = {}
+        if "Calculation" in config:
+            for cat in self.categories:
+                value = config.getboolean("Calculation", cat, fallback=True)
+                self.use_in_calc[cat] = tk.BooleanVar(value=value)
+        else:
+            self.use_in_calc = {cat: tk.BooleanVar(value=True) for cat in self.categories}
 
     def save_settings(self):
         config = configparser.ConfigParser()
@@ -51,6 +59,9 @@ class SteamReviewGeneratorApp:
         config["Categories"] = {}
         for cat, var in self.visible_categories.items():
             config["Categories"][cat] = str(var.get())
+        config["Calculation"] = {}
+        for cat, var in self.use_in_calc.items():
+            config["Calculation"][cat] = str(var.get())
         with open(self.config_file, "w") as configfile:
             config.write(configfile)
 
@@ -103,7 +114,7 @@ class SteamReviewGeneratorApp:
         copy_review(self.root, review_text)
 
     def open_options(self):
-        open_options_dialog(self.root, self.categories, self.visible_categories, self.design_settings, self.update_options)
+        open_options_dialog(self.root, self.categories, self.visible_categories, self.use_in_calc, self.design_settings, self.update_options)
 
     def update_options(self):
         self.tabs.update_category_visibility()
@@ -113,6 +124,7 @@ class SteamReviewGeneratorApp:
         recommended = calculate_recommended_rating(
             self.categories,
             self.visible_categories,
+            self.use_in_calc,
             self.tabs.selected_options,
             self.tabs.audience_vars
         )
