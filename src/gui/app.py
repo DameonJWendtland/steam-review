@@ -18,12 +18,13 @@ class SteamReviewGeneratorApp:
         self.load_settings()
         self.notebook = ttk.Notebook(root)
         self.notebook.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+        self.create_general_info_button()
         self.tabs = CategoryTabs(self.notebook, self.categories, self.visible_categories)
         self.create_rating_frame()
         self.create_output_frame()
         self.create_button_frame()
         root.columnconfigure(0, weight=1)
-        root.rowconfigure(2, weight=1)
+        root.rowconfigure(3, weight=1)
 
     def load_settings(self):
         config = configparser.ConfigParser()
@@ -65,16 +66,51 @@ class SteamReviewGeneratorApp:
         with open(self.config_file, "w") as configfile:
             config.write(configfile)
 
+    def create_general_info_button(self):
+        self.general_info = ""
+        frame = ttk.Frame(self.root)
+        frame.grid(row=1, column=0, padx=10, pady=(5, 0), sticky="ew")
+        btn_insert = ttk.Button(frame, text="Insert General Info", command=self.open_general_info)
+        btn_insert.pack(side="left", expand=True, fill="x", padx=(0, 5))
+        btn_reset = ttk.Button(frame, text="Reset all inserted information", command=self.reset_inserted_info)
+        btn_reset.pack(side="right", expand=True, fill="x", padx=(5, 0))
+
+    def reset_inserted_info(self):
+        self.general_info = ""
+        for cat in self.tabs.insert_info:
+            self.tabs.insert_info[cat] = ""
+        from tkinter import messagebox
+        messagebox.showinfo("Information", "All inserted information texts have been reset successfully!")
+
+    def open_general_info(self):
+        win = tk.Toplevel(self.root)
+        win.title("Insert General Info")
+        win.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "optionen.ico"))
+        entry = tk.Text(win, height=5, width=40)
+        entry.insert("1.0", self.general_info)
+        entry.pack(padx=10, pady=10)
+        def save_info():
+            self.general_info = entry.get("1.0", "end").strip()
+            win.destroy()
+        def clear_info():
+            entry.delete("1.0", "end")
+        frame_buttons = ttk.Frame(win)
+        frame_buttons.pack(pady=5)
+        btn_ok = ttk.Button(frame_buttons, text="OK", command=save_info)
+        btn_clear = ttk.Button(frame_buttons, text="Clear", command=clear_info)
+        btn_ok.pack(side="left", padx=5)
+        btn_clear.pack(side="left", padx=5)
+
     def create_rating_frame(self):
         self.rating_frame = ttk.LabelFrame(self.root, text="Rating")
-        self.rating_frame.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
+        self.rating_frame.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
         self.rating_var = tk.IntVar(value=5)
         self.rating_scale = tk.Scale(self.rating_frame, from_=1, to=10, orient="horizontal", variable=self.rating_var)
         self.rating_scale.pack(padx=10, pady=5, fill="x")
 
     def create_output_frame(self):
         self.output_frame = ttk.Frame(self.root)
-        self.output_frame.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+        self.output_frame.grid(row=3, column=0, padx=10, pady=10, sticky="nsew")
         self.output_text = tk.Text(self.output_frame, wrap="word")
         self.output_text.grid(row=0, column=0, sticky="nsew")
         scrollbar = ttk.Scrollbar(self.output_frame, orient="vertical", command=self.output_text.yview)
@@ -85,7 +121,7 @@ class SteamReviewGeneratorApp:
 
     def create_button_frame(self):
         self.button_frame = ttk.Frame(self.root)
-        self.button_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
+        self.button_frame.grid(row=4, column=0, padx=10, pady=10, sticky="ew")
         self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
         ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0, padx=5, pady=5, sticky="ew")
         ttk.Button(self.button_frame, text="Save as TXT", command=self.save_as_txt).grid(row=0, column=1, padx=5, pady=5, sticky="ew")
@@ -101,7 +137,8 @@ class SteamReviewGeneratorApp:
             selected_options=self.tabs.selected_options,
             audience_vars=self.tabs.audience_vars,
             design_settings=self.design_settings,
-            insert_info=self.tabs.insert_info
+            insert_info=self.tabs.insert_info,
+            general_info=self.general_info
         )
         self.output_text.delete("1.0", tk.END)
         self.output_text.insert(tk.END, review_text)
