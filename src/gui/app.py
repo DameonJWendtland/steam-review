@@ -100,7 +100,8 @@ class SteamReviewGeneratorApp:
             visible_categories=self.visible_categories,
             selected_options=self.tabs.selected_options,
             audience_vars=self.tabs.audience_vars,
-            design_settings=self.design_settings
+            design_settings=self.design_settings,
+            insert_info=self.tabs.insert_info
         )
         self.output_text.delete("1.0", tk.END)
         self.output_text.insert(tk.END, review_text)
