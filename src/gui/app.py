@@ -119,7 +119,8 @@ class SteamReviewGeneratorApp:
         dialog = tk.Toplevel(self.root)
         dialog.title("Recommended Rating")
         dialog.geometry("300x150")
-        dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/bewertung.ico")
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "bewertung.ico")
+        dialog.iconbitmap(icon_path)
         label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
         label.pack(pady=20)
         button_frame = ttk.Frame(dialog)
@@ -136,9 +137,11 @@ class SteamReviewGeneratorApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    icon_path = os.path.join(base_dir, "..", "icons", "checkliste.ico")
+    root.iconbitmap(icon_path)
     root.title("Steam Review Generator")
     root.geometry("800x600")
     root.resizable(True, True)
-    root.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/checkliste.ico")
     app = SteamReviewGeneratorApp(root)
     root.mainloop()
