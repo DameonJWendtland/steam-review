@@ -26,35 +26,34 @@ class CategoryTabs:
     def create_category_tab(self, cat, options):
         frame = ttk.Frame(self.notebook)
         self.frames[cat] = frame
-
         frame.columnconfigure(0, minsize=200)
         frame.columnconfigure(1, weight=1)
-
+        header_frame = ttk.Frame(frame)
+        header_frame.grid(row=0, column=0, columnspan=2, sticky="ew")
+        header_frame.columnconfigure(0, weight=1)
+        lbl = ttk.Label(header_frame, text=cat, font=("TkDefaultFont", 10,"bold"))
+        lbl.grid(row=0, column=0, sticky="w", padx=10, pady=2)
+        btn = ttk.Button(header_frame, text="Insert Info", command=lambda c=cat: self.open_insert_info(c))
+        btn.grid(row=0, column=1, sticky="e", padx=10, pady=2)
         if cat == "Audience":
             self.audience_vars = {option: tk.BooleanVar(value=False) for option in options}
             self.audience_widgets = {}
+            check_frame = ttk.Frame(frame)
+            check_frame.grid(row=1, column=0, columnspan=2, sticky="nw")
             for i, option in enumerate(options):
                 cb = ttk.Checkbutton(
-                    frame,
+                    check_frame,
                     text=option,
                     variable=self.audience_vars[option],
                     command=self.update_audience_checkbuttons
                 )
-                cb.grid(row=i, column=0, sticky="w", padx=10, pady=2, columnspan=2)
+                cb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
                 self.audience_widgets[option] = cb
         else:
-            placeholder = ttk.Label(frame, text="")
-            placeholder.grid(row=0, column=0, sticky="w", padx=10, pady=2)
-
-            btn = ttk.Button(frame, text="Insert Info", command=lambda c=cat: self.open_insert_info(c))
-            btn.grid(row=0, column=1, sticky="ne", padx=10, pady=2)
-
             var = tk.StringVar(value="")
             self.selected_options[cat] = var
-
             radio_frame = ttk.Frame(frame)
             radio_frame.grid(row=1, column=0, columnspan=2, sticky="nw")
-
             for i, option in enumerate(options):
                 rb = ttk.Radiobutton(radio_frame, text=option, variable=var, value=option)
                 rb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
