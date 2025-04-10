@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -61,6 +62,7 @@ class CategoryTabs:
     def open_insert_info(self, cat):
         win = tk.Toplevel(self.notebook)
         win.title("Insert Info for " + cat)
+        win.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "optionen.ico"))
         entry = tk.Text(win, height=5, width=40)
         entry.insert("1.0", self.insert_info.get(cat, ""))
         entry.pack(padx=10, pady=10)
