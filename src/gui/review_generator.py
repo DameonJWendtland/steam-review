@@ -1,9 +1,11 @@
-def generate_review_text(rating, categories, visible_categories, selected_options, audience_vars, design_settings, insert_info, general_info):
+def generate_review_text(rating, categories, visible_categories, selected_options, audience_vars, design_settings,
+                         insert_info, general_info):
     review_heading = design_settings.get("review_heading", 1)
     category_heading = design_settings.get("category_heading", 3)
     review_lines = [f"[h{review_heading}]{rating} / 10[/h{review_heading}]"]
     if design_settings.get("credits", False):
-        review_lines.append("[url=https://github.com/DameonJWendtland/steam-review-generator]Want to generate reviews? Look here[/url]")
+        review_lines.append(
+            "[url=https://github.com/DameonJWendtland/steam-review-generator]Want to generate reviews? Look here[/url]")
     if general_info.strip():
         review_lines.append(f"[code] {general_info} [/code]")
     review_lines.append("")
