@@ -1,5 +1,3 @@
-# options_dialog.py
-import os
 import tkinter as tk
 from tkinter import ttk
 import webbrowser
@@ -9,8 +7,7 @@ def open_options_dialog(root, categories, visible_categories, use_in_calc, desig
     options_dialog = tk.Toplevel(root)
     options_dialog.title("Options")
     options_dialog.geometry("400x500")
-    icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "optionen.ico")
-    options_dialog.iconbitmap(icon_path)
+    options_dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/optionen.ico")
     button_frame = ttk.Frame(options_dialog)
     button_frame.pack(side="top", fill="x", pady=5)
     content_frame = ttk.Frame(options_dialog)

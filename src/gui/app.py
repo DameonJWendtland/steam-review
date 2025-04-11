@@ -1,4 +1,3 @@
-# app.py
 import os
 import configparser
 import tkinter as tk
@@ -9,6 +8,7 @@ from src.gui.tabs import CategoryTabs
 from src.gui.review_generator import generate_review_text
 from src.gui.file_manager import save_review, copy_review
 from src.gui.options_dialog import open_options_dialog
+
 
 class SteamReviewGeneratorApp:
     def __init__(self, root):
@@ -79,21 +79,23 @@ class SteamReviewGeneratorApp:
         self.general_info = ""
         for cat in self.tabs.insert_info:
             self.tabs.insert_info[cat] = ""
-        from tkinter import messagebox
         messagebox.showinfo("Information", "All inserted information texts have been reset successfully!")
 
     def open_general_info(self):
         win = tk.Toplevel(self.root)
         win.title("Insert General Info")
-        win.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "optionen.ico"))
+        win.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/optionen.ico")
         entry = tk.Text(win, height=5, width=40)
         entry.insert("1.0", self.general_info)
         entry.pack(padx=10, pady=10)
+
         def save_info():
             self.general_info = entry.get("1.0", "end").strip()
             win.destroy()
+
         def clear_info():
             entry.delete("1.0", "end")
+
         frame_buttons = ttk.Frame(win)
         frame_buttons.pack(pady=5)
         btn_ok = ttk.Button(frame_buttons, text="OK", command=save_info)
@@ -123,11 +125,20 @@ class SteamReviewGeneratorApp:
         self.button_frame = ttk.Frame(self.root)
         self.button_frame.grid(row=4, column=0, padx=10, pady=10, sticky="ew")
         self.button_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
-        ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0, padx=5, pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Save as TXT", command=self.save_as_txt).grid(row=0, column=1, padx=5, pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Copy Review", command=self.copy_review).grid(row=0, column=2, padx=5, pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Options", command=self.open_options).grid(row=0, column=3, padx=5, pady=5, sticky="ew")
-        ttk.Button(self.button_frame, text="Recommend Rating", command=self.show_recommended_rating).grid(row=0, column=4, padx=5, pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Generate Review", command=self.generate_review).grid(row=0, column=0,
+                                                                                                 padx=5, pady=5,
+                                                                                                 sticky="ew")
+        ttk.Button(self.button_frame, text="Save as TXT", command=self.save_as_txt).grid(row=0, column=1, padx=5,
+                                                                                         pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Copy Review", command=self.copy_review).grid(row=0, column=2, padx=5,
+                                                                                         pady=5, sticky="ew")
+        ttk.Button(self.button_frame, text="Options", command=self.open_options).grid(row=0, column=3, padx=5, pady=5,
+                                                                                      sticky="ew")
+        ttk.Button(self.button_frame, text="Recommend Rating", command=self.show_recommended_rating).grid(row=0,
+                                                                                                          column=4,
+                                                                                                          padx=5,
+                                                                                                          pady=5,
+                                                                                                          sticky="ew")
 
     def generate_review(self):
         review_text = generate_review_text(
@@ -152,7 +163,8 @@ class SteamReviewGeneratorApp:
         copy_review(self.root, review_text)
 
     def open_options(self):
-        open_options_dialog(self.root, self.categories, self.visible_categories, self.use_in_calc, self.design_settings, self.update_options)
+        open_options_dialog(self.root, self.categories, self.visible_categories, self.use_in_calc, self.design_settings,
+                            self.update_options)
 
     def update_options(self):
         self.tabs.update_category_visibility()
@@ -169,27 +181,28 @@ class SteamReviewGeneratorApp:
         dialog = tk.Toplevel(self.root)
         dialog.title("Recommended Rating")
         dialog.geometry("300x150")
-        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "bewertung.ico")
-        dialog.iconbitmap(icon_path)
+        dialog.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/bewertung.ico")
         label = ttk.Label(dialog, text=f"Recommended rating:\n{recommended} / 10", font=("Arial", 14))
         label.pack(pady=20)
         button_frame = ttk.Frame(dialog)
         button_frame.pack(side="bottom", fill="x", pady=10, padx=10)
+
         def on_cancel():
             dialog.destroy()
+
         def on_apply():
             self.rating_var.set(recommended)
             dialog.destroy()
+
         cancel_button = ttk.Button(button_frame, text="Cancel", command=on_cancel)
         apply_button = ttk.Button(button_frame, text="Apply", command=on_apply)
         cancel_button.pack(side="left", expand=True, fill="x", padx=(0, 5))
         apply_button.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
+
 if __name__ == "__main__":
     root = tk.Tk()
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    icon_path = os.path.join(base_dir, "..", "icons", "checkliste.ico")
-    root.iconbitmap(icon_path)
+    root.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/checkliste.ico")
     root.title("Steam Review Generator")
     root.geometry("800x600")
     root.resizable(True, True)

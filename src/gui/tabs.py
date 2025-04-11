@@ -1,4 +1,3 @@
-import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -32,7 +31,7 @@ class CategoryTabs:
         header_frame = ttk.Frame(frame)
         header_frame.grid(row=0, column=0, columnspan=2, sticky="ew")
         header_frame.columnconfigure(0, weight=1)
-        lbl = ttk.Label(header_frame, text=cat, font=("TkDefaultFont", 10,"bold"))
+        lbl = ttk.Label(header_frame, text=cat, font=("TkDefaultFont", 10, "bold"))
         lbl.grid(row=0, column=0, sticky="w", padx=10, pady=2)
         btn = ttk.Button(header_frame, text="Insert Info", command=lambda c=cat: self.open_insert_info(c))
         btn.grid(row=0, column=1, sticky="e", padx=10, pady=2)
@@ -42,12 +41,8 @@ class CategoryTabs:
             check_frame = ttk.Frame(frame)
             check_frame.grid(row=1, column=0, columnspan=2, sticky="nw")
             for i, option in enumerate(options):
-                cb = ttk.Checkbutton(
-                    check_frame,
-                    text=option,
-                    variable=self.audience_vars[option],
-                    command=self.update_audience_checkbuttons
-                )
+                cb = ttk.Checkbutton(check_frame, text=option, variable=self.audience_vars[option],
+                                     command=self.update_audience_checkbuttons)
                 cb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
                 self.audience_widgets[option] = cb
         else:
@@ -62,7 +57,7 @@ class CategoryTabs:
     def open_insert_info(self, cat):
         win = tk.Toplevel(self.notebook)
         win.title("Insert Info for " + cat)
-        win.iconbitmap(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "icons", "optionen.ico"))
+        win.iconbitmap("C:/Users/micro/PycharmProjects/steam-review/src/icons/optionen.ico")
         entry = tk.Text(win, height=5, width=40)
         entry.insert("1.0", self.insert_info.get(cat, ""))
         entry.pack(padx=10, pady=10)
